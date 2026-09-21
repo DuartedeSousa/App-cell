@@ -29,7 +29,7 @@ export default functuion Inicio(){
 //                bloco 1
 //=====================================================
 
-    cont router = useRouter();
+    const router = useRouter();
     //percorre o array jogos e croa um novo array destaques completo apenas os objetos
     const destaques = jogos.filter((jogo) => jogo.destaque)
      const populares = [...jogos].sort((a, b) => b.nota - a.nota).slice(0,5);
@@ -53,10 +53,60 @@ return(
 //====================================================
 //                bloco 2.1- seção de jogos
 //=====================================================
+    <text style={StyleSheet.secaoTitulo}>Jogos em destaque</text>
+    {/* Exibe o titulo desta seção, usando o estilo "secaotitulo" */}
+    <FlatList
+        data={destaques}
+        //define a fonte de dados da lisa - array "destaques"
+        keyExtractor={(item) => item.id}
+        // Função que retorna uma chave única
+        horizontal
+        // faz a lista rolar
+        showsVerticalScrollIndicator={false}
+        //oculta a barrinha de rolagem horizontal, deixando a interface mais limpa
+        renderItem={({item}) => <Gamecard jogo={item}/>}
+        //função chamanda para cada elemento do array "data"
+    />
+
+//====================================================
+//                bloco 2.2- seção de jogos
+//=====================================================
 
 
+    {/*Mesma estrutura da seção anterior, mas com dados diferentes */}
 
+    <text style={styles.secaoTitulo}>Mais Populares</text>
+    {/* Título da segunda seção, reaproveitando o mesmo estilo "Seção Título" */}
 
+    <FlatList
+        data={populares}
+        // Desta vez a fonte de dados é o array "populares" (top 5 por nota)
+        keyExtractor={(item) => item.id}
+        // Mesma lógica de chave única no id do jogo
+        horizontal
+        // Lista horizontal, igual à seção anterior
+        showsHorizontalScrollingIndicator={false}
+        // Esconder o indicador de rolagem
+        renderItem={({item}) => <GameCard jogo={item} />}
+        //Reutiliza o mesmo componente GameCard, provando que ele funciona com qualquer lista de jogos
+    />
+
+//====================================================
+//        bloco 2.3- Botão "Ver todos os jogos"
+//=====================================================
+
+    {/* Presable oferece mais controle sobre o estilo e feedback visual */}
+
+    <pressable
+    style={styles.botao}
+    // Aplica o estilo visual no botão!
+    onPress={() => router.push("./jogos")}
+    //onPress: Função executada quando o usuário toca no botão
+    // router.push("/jogos") navega para a rota "/jogos"
+    >
+        <text style={styles.textobotao}>Ver todos os Jogos </text>
+
+    </pressable>
 
     </ScrollView>
 
@@ -64,3 +114,49 @@ return(
 );
 
 }
+//====================================================
+//        bloco 3 - Estilos
+//=====================================================
+// PORQUE USAR StyleSheet?
+// - StyleSheet.create oyimixs os estilos (evita recriação desnecessária)
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: cores.fundo
+    },
+    conteudo: {
+        padding: 20,
+        paddingBottom: 40,
+    },
+    titulo: {
+        fontSize: 32,
+        fontWeight: "bold",
+        color: cores.textoPrincipal,
+    },
+    subtitulo: {
+        fontSize: 15,
+        color: cores.textoSecundario,
+        marginTop: 4,
+        marginBottom: 24,
+    },
+    secaoTitulo:{
+        fontSize: 18,
+        fontWeight: "bold",
+        color: cores.textoPrincipal,
+        marginTop: 8,
+        marginBottom: 12,
+    },
+    botao: {
+        backgroundColor: cores.roxo,
+        borderRadius: 12,
+        paddingVertical: 14,
+        alignItems: "center",
+        marginTop: 24,
+    },
+    textbotao:{
+        color: cores.textoPricipal,
+        fontSize: 16,
+        fontWeight: "bold",
+    }
+})
