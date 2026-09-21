@@ -7,7 +7,7 @@ import{ useRouter } from "expo-router";
 //navegação programatica.
 import { cores } from "../data/tema";
 
-export default function GameCard ((jogo)){
+export default function GameCard ({jogo}){
     const router = useRouter();
 
     return (
@@ -26,6 +26,6 @@ export default function GameCard ((jogo)){
         </Pressable>
     )
 }
-const styles = StylesSheet.create({
-    
+const styles = StyleSheet.create({
+
 })
