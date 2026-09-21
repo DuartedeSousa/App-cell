@@ -22,7 +22,7 @@ import {jogos} from "../data/jogos";
 import {cores} from "../data/tema";
 //importa a paleta de cores do app do arquivo data/tema.js
 //=======================================
-export default functuion Inicio(){
+export default function Inicio(){
     //obtemos o objeto de navegação
 
 ///====================================================
