@@ -1,6 +1,6 @@
-//--------------------------------------
-//ETAPA 2 - centralizar cores
-//--------------------------------------
+// ===============================
+// ETAPA 2 - CENTRALIZAR CORES
+// ===============================
 
 export const cores = {
     fundo: "#121212",
@@ -8,7 +8,7 @@ export const cores = {
     roxo: "#7F5AF0",
     verde: "#2CB67D",
     textoPrincipal: "#FFFFFF",
-    textoSecubndario: "#A0A0A0",
+    textoSecundario: "#A0A0A0",
     borda: "#2A2A2A",
 
 };
